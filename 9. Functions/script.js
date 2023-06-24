@@ -1,205 +1,170 @@
-// Локальные переменные
-// console.log('Глобальная область видимости');
+// // Function declaration
 
-// while() {
-//  // Локальная
+// // myFunc(); // 'Код функции'
+
+// // function myFunc() {
+// //     console.log('Код функции');
+// // }
+
+// // myFunc(); // 'Код функции'
+
+// // Hoisting (Поднятие)
+
+// // var num = 10;
+
+// // console.log(num); // 10
+
+// // var num; => undefined
+
+// // console.log(num); // undefined
+// // var num = 10;
+
+// // console.log(num); // 10
+
+// // // var num2; => undefined
+// // console.log(num2); // undefined
+
+// // num2 = 15;
+
+// // console.log(num2); // 15
+
+// // var num2;
+
+// // console.log(num);
+// // let num = 10;
+
+// // console.log(num2);
+
+// // const num2 = 10;
+
+// // Function expression
+
+// // var func1; => undefined
+
+// // func1(); // undefined() => func1 is not a function
+
+// // var func1 = function() {
+// //     console.log('Код функции - 1')
+// // }
+
+// // console.log(func1); // Код функции - 1
+
+// // console.log(func2); // Ошибка
+// // let func2 = function() {
+// //     console.log('Код функции - 2')
+// // }
+
+// // console.log(func3); // Ошибка
+// // const func3 = function() {
+// //     console.log('Код функции - 3')
+// // }
+
+// // Вызов функции vs сама функция
+
+// // function getSum(a, b) {
+// //     return a + b
+// // }
+
+// // console.log(getSum(1, 2)); // 3
+// // console.log(getSum); // function getSum(a, b) {return a + b}
+
+// // const getSum2 = getSum;
+// // const num = getSum(1, 2);
+
+// // console.log(getSum2); // function getSum(a, b) {return a + b}
+// // console.log(getSum2()); // NaN
+// // console.log(num); // 3
+
+// // Функции-коллбэки (callback)
+
+// // function func(arg) {
+// //     console.log(arg);
+// // }
+
+// // func(1)
+// // func('123')
+// // func(null)
+// // func()
+// // func(undefined)
+
+// // function myFunc(callback) {
+// //     callback(); // randomFunc()
+// // }
+
+// // function randomFunc() {
+// //     console.log('код')
+// // }
+
+// // myFunc(randomFunc()); // myFunc(undefined)
+// // myFunc(randomFunc); // 'код'
+
+// function otherFunc1() {
+//     console.log(123);
 // }
 
-// for () {
-//  // Локальная
+// function otherFunc2() {
+//     console.log(222);
 // }
 
-// if () {
-//  // Локальная
+// function otherFunc3() {
+//     console.log(333);
 // }
 
-// function myFunc() {
-//  // Локальная
+// function otherFunc4() {
+//     console.log(444);
+
+//     return 'random value'
 // }
 
-// function myFunc() {
-//     let localVariable = 50;
+// // function func() {
+// //     otherFunc();
+// // }
+
+// // func(); // 123
+
+// // function func(callback) {
+// //     console.log(callback());
+// // }
+
+// // func(otherFunc1); // undefined
+// // func(otherFunc2); // undefined
+// // func(otherFunc3); // undefined
+// // func(otherFunc4); // 'random value'
+
+// // Анонимные функции
+
+// function onTrue() {
+//     console.log(true);
 // }
 
-// console.log(localVariable); // Нет доступа к области функции
-
-// Внешние переменные
-
-// let globalVariable = 50;
-
-// function myFunc() {
-//     console.log(globalVariable);
+// function onFalse() {
+//     console.log(false);
 // }
 
-// myFunc(); // 50
-
-// function myFunc() {
-//     console.log(globalVariable);
-// }
-
-// myFunc(); // ошибка - переменная не объявлена
-
-// Игнорирование глобальных переменных
-
-// let num = 10;
-
-// function myFunc() {
-//     let num = 15;
-//     console.log(num); 
-// }
-
-// let num = 10;
-// function myFunc(num) {
-//     let num = 0;
-//     console.log(num);
-// }
-
-// myFunc(100); // 100
-
-// myFunc(); // 15
-
-// Переопределение значений
-
-// let num = 10;
-
-// function myFunc() {
-//     num = 15;
-//     console.log(num); 
-// }
-
-// myFunc(); // 15
-
-// Вложенные локальные блоки
-
-// console.log('Глобальная');
-
-// let globalVariable = 'some data';
-
-// function checkNumber(num) {
-//     console.log('Локальная')
-
-//     let globalVariable = '123';
-//     console.log(globalVariable); // '123'
-//     if (true) {
-//         // Подлокальная
-//         globalVariable = '222';
-
-//         console.log(globalVariable); // '222'
-//     } else if () {
-//         // Подлокальная
-//     console.log(globalVariable);
-
+// function checkCondition(condition, callback1, callback2) {
+//     if (condition) {
+//         callback1()
 //     } else {
-//         // Подлокальная
-//     console.log(globalVariable);
-
-//     }
-
-//     console.log(globalVariable); // '222'
-// }
-
-// const dollarRate = 80;
-
-// function dollarsToRoubles(dollars) {
-//     console.log(dollars * dollarRate);
-// }
-
-// dollarsToRoubles(1); // 80
-// dollarsToRoubles(2); // 160
-// dollarsToRoubles(3); // 240
-// dollarsToRoubles(100); // 8000
-
-// Возврат значения
-
-// function myFunc() {}
-
-// console.log(myFunc()); // undefined
-
-// function myFunc(a, b) {
-//     console.log(a + b);
-// }
-
-// myFunc(1, 2); // 3
-// console.log(myFunc(1, 2)); // 3 -  консоли и undefined
-
-// const sum = myFunc(1, 2); // undefined
-
-// function myFunc(a, b) {
-//     return a + b
-// }
-
-// // console.log(myFunc(1, 2)); // 3
-
-// const sum = myFunc(1, 2); // 3
-
-// if (sum % 2 === 0) {
-//     console.log('Сумма четная')
-// }
-
-// function myFunc() {
-//     return 'какое-то значение'
-
-//     console.log('код никогда не выполнится')
-// }
-
-// function myFunc() {
-//     // неправильно
-//     return
-//     'какое-то значение'
-// }
-
-// if () {
-//     let num = 10;
-// }
-
-// console.log(num)
-
-// let num = 10;
-
-// if () {
-//     console.log(10)
-// }
-
-// function outputEvenAndOddNumbers(start, end) {
-
-//     if (start >= end) { // true
-//         // return 'Укажите правильный диапазон';
-
-//         console.log('Укажите правильный диапазон');
-//         return; // undefined и прекратит цикл
-//     }
-
-//     for (let i = start; i <= end; i++) {
-//         if (i % 2 === 0) {
-//             console.log(`${i} - четное`);
-//         } else {
-//             console.log(`${i} - нечетное`);
-//         }
+//         callback2()
 //     }
 // }
 
-// outputEvenAndOddNumbers(1, 5);
-// outputEvenAndOddNumbers(0, 10);
-// outputEvenAndOddNumbers(-12, 10);
-// outputEvenAndOddNumbers(15, 5);
+// checkCondition(
+//     5 > 4,
+//     function() { console.log('Код 1') },
+//     function() { console.log('Код 2') }
+// ); // false
 
+// checkCondition(
+//     '',
+//     onTrue,
+//     onFalse(),
+// ); // false
 
-// function checkNumber(num) {
-//     // if (num > 0) {
-//     //     console.log('пол')
-//     // } else if (num < 0) {
-//     //     console.log('отр')
-//     // } else {
-//     //     console.log('ноль')
-//     // }
+// checkCondition(
+//     '',
+//     function() { console.log('Код 1') },
+//     function() { console.log('Код 2') }
+// ); // false
 
-//     if (num > 0) {
-//         return 'пол';
-//     }
-    
-//     if (num < 0) {
-//         return 'отр'
-//     }
-    
-//     return 'ноль';
-// }
+// console.log(function() {}); // function() {}
