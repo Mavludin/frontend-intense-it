@@ -202,6 +202,12 @@
 //     key3: 'value3',
 //     key4: 'value4',
 //     key5: 'value5',
+//     key6: null,
+//     key7: undefined,
+//     key8: 123,
+//     key9: {
+//         num: 50
+//     }
 // }
 
 // const obj2 = {};
@@ -210,6 +216,20 @@
 //     obj2[key] = obj1[key]; // key1 = value1 и так далее
 // }
 
+// // При поверхностном копировании
+// obj2.key9 = obj1.key9; // в obj2.key9 и obj1.key9 хранится один и тот же объект (ссылка на него)
+
+// // Создали совершенно новый объект явно
+// obj2.key9 = {
+//     num: 50
+// }
+
+// console.log(obj2);
+
+// obj2.key1 = 'new Value'
+// obj2.key9.num = 100
+
+// console.log(obj1);
 // console.log(obj2);
 
 // console.log(obj1 === obj2); // false
@@ -234,34 +254,55 @@
 // const obj1 = {
 //     key1: 'value1',
 //     key2: 'value2',
+//     key3: {
+//         num: 50,
+//         str: 'some string',
+//         nested: {
+//             someKey: null
+//         }
+//     }
 // }
 
 // const obj2 = Object.assign({}, obj1);
+
+// console.log(obj2.key3 === obj1.key3); // true
+// console.log(obj2.key3.nested === obj1.key3.nested); // true
+
+// obj2.key3 = {
+//     num: 50,
+//     str: 'some string',
+//     nested: {
+//         someKey: null
+//     }
+// }
+
+// console.log(obj2.key3 === obj1.key3); // false
+// console.log(obj2.key3.nested === obj1.key3.nested); // false
 
 // console.log(obj2);
 // console.log(obj1 === obj2); // false => Разные объекты
 
 // Не пустой объек
 
-const obj1 = {
-    key1: 'value1',
-    key2: 'value2',
-}
+// const obj1 = {
+//     key1: 'value1',
+//     key2: 'value2',
+// }
 
-const obj2 = {
-    randomKey1: 'value3',
-    randomKey2: 'value4',
-}
+// const obj2 = {
+//     randomKey1: 'value3',
+//     randomKey2: 'value4',
+// }
 
-const obj3 = {
-    key3: 'new Value',
-    key4: 'new Value',
-    randomKey1: 'new Value',
-}
+// const obj3 = {
+//     key3: 'new Value',
+//     key4: 'new Value',
+//     randomKey1: 'new Value',
+// }
 
-// Object.assign(obj1, obj2, obj3);
-Object.assign(obj1, obj3, obj2);
+// // Object.assign(obj1, obj2, obj3);
+// Object.assign(obj1, obj3, obj2);
 
-// obj1.key3 = obj2.key3
-// obj1.key4 = obj2.key4
-console.log(obj1);
+// // obj1.key3 = obj2.key3
+// // obj1.key4 = obj2.key4
+// console.log(obj1);
