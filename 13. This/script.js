@@ -81,37 +81,158 @@
 
 // arrowFunction();
 
-// const book = {
-//     pages: 500,
-//     genre: 'novel',
-//     title: 'random book name',
-//     // getGenre() {
-//     //     console.log(this.genre)
-//     // } // novel
-//     // getGenre: () => {
-//     //     console.log(this.genre)  
-//     // } // window.gender === undefined,
-//     // getGenre (){
+const book = {
+    pages: 500,
+    genre: 'novel',
+    title: 'random book name',
+    getGenre() {
+        console.log(this.genre)
+    }, // novel
+    getGenre: () => {
+        console.log(this.genre)  
+    }, // window.gender === undefined,
+    getGenre (){
 
-//     //     // this будем искать тут
-//     //     const print = () => {
-//     //         console.log(this.genre); // прыгаем отсюда выше
-//     //     }
+        // this будем искать тут
+        const print = () => {
+            console.log(this.genre); // прыгаем отсюда выше
+        }
 
-//     //     print()
-//     // } // window.gender === undefined,
-//     anotherBook: {
-//         genre: 'poem',
-//         // getGenre(){
-//         //     console.log(this.genre);
-//         // },
-//         getGenre: () => {
-//             console.log(this.genre)
-//         }
+        print()
+    }, // window.gender === undefined,
+    anotherBook: {
+        genre: 'poem',
+        getGenre: () => {
+            console.log(this.genre); // this === window т.к. явно ничем не обернули
+        }
+    }
+}
+
+// book.getGenre();
+
+// window => book => nestedObject
+book.anotherBook.getGenre();
+
+// Задачи
+
+// function makeUser() {
+//     return {
+//       name: "John",
+//       ref: this
+//     };
+// }
+
+// let user = makeUser();
+
+// console.log(user); // { name: "John", ref: this };
+// console.log(user.ref.name); // user.ref === window, window.name === ''
+
+// function someFunction() {
+//     console.log(this); // this === window
+// }
+
+// function makeUser() {
+//     return {
+//       name: "John",
+//       ref() {
+//         return this
+//       }
+//     };
+// }
+
+// const user = makeUser();
+// console.log(user);
+
+// console.log(user.ref().name); /// John
+
+// const calculator = {
+//     // a: 10,
+//     // b: 20,
+//     read() {
+//         this.a = +prompt('Введите первое число');
+//         this.b = +prompt('Введите второе число');        
+//     },
+//     sum() {
+//         return this.a + this.b
+//     },
+//     mul() {
+//         return this.a * this.b
 //     }
 // }
 
-// // book.getGenre();
+// // function sum() {
+// //     return calculator.a + calculator.b
+// // }
 
-// // window => book => nestedObject
-// book.anotherBook.getGenre();
+// // function mul() {
+// //     return calculator.a * calculator.b
+// // }
+
+// // console.log(sum());
+// // console.log(mul());
+
+// console.log(calculator.read());
+// console.log(calculator.sum());
+// console.log(calculator.mul());
+
+const ladder = {
+    step: 0,
+    up() {
+        this.step++;
+        return this
+    },
+    down() {
+        this.step--;
+        return this
+    },
+    showStep() { // показывает текущую ступеньку
+        console.log(this.step);
+        return this
+    }
+};
+
+// ladder.showStep(); // 0
+// ladder.up();
+// ladder.up();
+// ladder.up();
+// ladder.showStep(); // 3
+// ladder.down();
+// ladder.showStep(); // 2
+
+// ladder.up().up().down().showStep().up().down().showStep();
+
+// ladder.down().showStep().up().down(); // Увеличить счетчик и вернуть ladder 
+
+// const func = () => {
+//     return { name: 'James' }
+// }
+
+// const obj = func();
+// console.log(obj); // { name: 'James' }
+
+// const obj = {
+//     a: 1,
+//     increment() {
+//         this.a++
+
+//         return this
+//     },
+//     decrement() {
+//         this.a--
+
+//         return this
+//     }
+// }
+
+// obj.increment();
+// obj.increment();
+// obj.increment();
+// obj.increment();
+// obj.increment();
+
+// console.log(obj.a);
+
+// obj.increment().increment().increment().increment().increment().decrement().
+// //  {        }  {        }  {         } {         }
+
+// obj.increment(); // 
