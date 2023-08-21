@@ -1,162 +1,156 @@
-// Методы примитивов
+// Math max, min, random
+
+// console.log(Math.max(1, 2, 3)); // 3
+// console.log(Math.min(1, 2, 3)); // 1
+
+// console.log(Math.round(Math.random()));
+// console.log(Math.round(Math.random()));
+// console.log(Math.round(Math.random()));
+// console.log(Math.round(Math.random()));
+// console.log(Math.round(Math.random()));
+// console.log(Math.round(Math.random()));
+// console.log(Math.round(Math.random()));
+// console.log(Math.round(Math.random()));
+
+// Задача - бесконечный цикл
+
+// let i = 0;
+// while (i != 10) {
+//   i = Number((i + 0.2).toFixed(1));
+
+// //   if (i >= 11) {
+// //     break
+// //   }
+
+//   console.log(i);
+// }
+
+// Задача - decimals
+
+// const decimals = (num, digits) => {
+//     if (typeof num === 'number') {
+//         return num.toFixed(digits);
+//     }
+    
+//     return 'Не число'
+// }
+
+// Задача - степень двойки
+
+// const isInteger = (num) => parseInt(num) === num
+
+// const powerOf2 = (num) => {
+//     const result = Math.sqrt(num);
+//     // return isInteger(result);
+
+//     return Number.isInteger(result);
+// }
+
+// charAt и at
 
 // const str = 'string';
-// console.log(str.length); // 6
-// console.log(str.toUpperCase()); // 'STRING'
-// console.log(str.toLowerCase()); // 'string'
 
-// let num = 12.5;
-// console.log(num.toFixed(5)); // '12.50000'
-// console.log(num); // 12.5
+// console.log(str.charAt(0)); // 's'
+// console.log(str.at(0)); // 's'
 
-// num = num.toFixed(5);
-// console.log(num); // '12.50000'
-// console.log(+num); // 12.5
+// console.log(str.charAt(-1)); // ''
+// console.log(str.at(-1)); // 'g'
 
-// const num2 = 55.35; => 55.3499999999999
-// console.log(num2.toFixed(1)); // '55.3'
+// console.log(str.at(10)); // undefined
+// console.log(str.charAt(10)); // ''
 
-// const num3 = 55.33;
-// console.log(num2.toFixed(1)); // '55.3'
+// Примитивы не модифицируемы (иммутабельны)
+// let num = 10.55;
+// num.toFixed(1);
 
-// console.log(0.1 + 0.2 === 0.3); // false
+// console.log(num); // 10.55
 
-// +, Number, parseFloat, parseInt
+// num = +num.toFixed(1);
 
-// console.log(Number('123')); // 123
-// console.log(Number('123a')); // NaN
-// console.log(Number(null)); // 0
-// console.log(Number(false)); // 0
-// console.log(Number(true)); // 1
-// console.log(Number(undefined)); // NaN
-// console.log(Number(Infinity)); // Infinity
-// console.log(Number(-Infinity)); // -Infinity
-// console.log(Number(12.5)); // 12.5
-// console.log(Number('12.5')); // 12.5
+// console.log(num); // 10.6
 
-// console.log(parseInt('123a')); // 123
-// console.log(parseInt('123a1231231')); // 123
-// console.log(parseInt('a123')); // NaN
-// console.log(parseInt(12.5)); // 12
-// console.log(parseInt('12.5')); // 12
-
-// console.log(parseFloat('12.5')); // 12.5
-// console.log(parseFloat(12.5)); // 12.5
-
-// toString
-// const num = 12;
-// console.log(num.toString()); // '12'
-// console.log(12..toString()); // '12'
-
-// Math
-
-// const num = 12.5;
-
-// console.log('round', Math.round(num)); // 
-// console.log('floor', Math.floor(num)); //
-// console.log('ceil', Math.ceil(num)); //
-
-// Задача - isNatural
-
-// const isInteger = num => parseInt(num) === num
-
-// const isNatural = num => {
-//     if (typeof num === 'number') {
-//         return num > 0 && isInteger(num)
-//     }
-
-//     return false
-// }
-
-// isNatural(50); // parseInt(50) => 50 === 50
-// isNatural(50.5); // parseInt(50.5) => 50 === 50.5
-
-// isNaN и isFinite
-
-// console.log(typeof NaN); // 'number'
-
-// const value = '12a';
-// console.log(Number(value) === NaN); // false
-// console.log(NaN === NaN); // false
-// console.log(isNaN(value)); // true
-
-// console.log(isFinite('12a'));
-// console.log(isFinite('12'));
-// console.log(isFinite(12));
-// console.log(isFinite(NaN));
-// console.log(isFinite(''));
-// console.log(isFinite(Infinity));
-// console.log(isFinite(-Infinity));
-
-// Методы строк
-
-// const str1 = 'string';
-// const str2 = "string";
-// const str3 = `string`;
-// const str4 = `
-// row1
-// row2
-// row3
-// `;
-
-// const str5 = 'row1 \n row2 \n row3';
-// console.log(str5.length); //
-
-// // Экранирование
-
-// const str6 = 'I\'m a teacher'; // I'm a teacher
-// const str7 = "I'm a teacher"; // I'm a teacher
-// const str8 = 'backshlash \\'; // backshlash \
-
-// Длина строки - результат число
-
-// console.log(''.length); // 0
-// console.log(' '.length); // 1
-// console.log('\n '.length); // 2
-// console.log('123'.length); // 3
-
-// // Доступ к символам
+// Получение подстроки
 
 // const greeting = 'Hello World';
+// console.log(greeting.slice()); // 'Hello World'
+// console.log(greeting.slice(1)); // 'ello World'
+// console.log(greeting.slice(0, 5)); // 'Hello'
+// console.log(greeting.slice(-1)); // 'd'
+// console.log(greeting.slice(-5)); // 'd'
+// console.log(greeting.slice(-5, -1)); //
 
-// console.log(greeting[0]); 'H'
-// console.log(greeting[1]); // 'e'
-// console.log(greeting[-1]); // undefined
-// console.log(greeting[greeting.length - 1]); // 'd'
-// console.log(greeting.at(-1)); // 'd'
+// indexOf, lastIndexOf
 
-// Перебор строки
+// const greeting = 'Hello World World';
 
-// let str = 'string';
+// console.log(greeting.indexOf('World')); // 6
+// console.log(greeting.indexOf('o')); // 4
 
-// for (let i = 0; i < str.length; i++) {
-//     console.log(str[i]);
+// console.log(greeting.lastIndexOf('World')); // 12
+// console.log(greeting.lastIndexOf('o')); // 13
+
+// Задача - поиск гласных букв
+
+// const str1 = 'Hello World'; // 3
+// const str2 = 'random string'; // 3
+// const str3 = 'birth day'; // 3
+// const str4 = 'some random string'; // 5
+// const str5 = 'STRING'; // 1
+
+/* 
+console.log(amountOfVowels(str1)) // 3
+console.log(amountOfVowels(str2)) // 3
+console.log(amountOfVowels(str3)) // 3
+console.log(amountOfVowels(str4)) // 5
+console.log(amountOfVowels(str5)) // 1
+*/
+
+// const amountOfVowels = (str) => {
+//     let count = 0;
+
+//     // Решение 1
+//     // for (const char of str.toLowerCase()) {
+//     //     if (
+//     //         char === 'a' ||
+//     //         char === 'e' ||
+//     //         char === 'i' ||
+//     //         char === 'o' ||
+//     //         char === 'y' ||
+//     //         char === 'u'
+//     //     ) {
+//     //         count++
+//     //     }
+//     // }
+
+//     const vowels = 'aeioyu';
+
+//     for (const char of str.toLowerCase()) {
+
+//         // Решение 2
+//         // if (vowels.indexOf(char) !== -1) {
+//         //     count++
+//         // }
+
+//         // Решение 3
+//         if (vowels.includes(char)) {
+//             count++
+//         }
+//     }
+
+//     return count
 // }
 
-// for (const item of str) {
-//     console.log(item);
-// }
+// const str = 'random string'
 
-// let str2 = '';
+// console.log(str.startsWith('o')); // false
+// console.log(str.startsWith('random')); // true
+// console.log(str.startsWith('r')); // true
 
-// for (let item of str) {
-//     // Не модифицируется
-//     console.log(item + 'b')
-//     item += 'b'
+// console.log(str.endsWith('a')); // false
+// console.log(str.startsWith('string')); // true
+// console.log(str.startsWith('ing')); // true
 
-//     // Новая строка с ожидаемым значением
-//     str2 += item + 'b'
-// }
+// null и undefined - ошибки
 
-// console.log(str2);
-
-// let str = 'string'
-// str = 'H' + str.slice(1); // Htring
-
-// console.log(str); // string
-
-// str = 'Htring';
-
-// console.log(str); // Htring
-
-// Примитивы не модифицируются
+// console.log(null.slice()); // Ошибка
+// console.log(undefined.length); // Ошибка
