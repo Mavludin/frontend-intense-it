@@ -1,239 +1,216 @@
-// Удаление элементов в массиве
+/*
+Написать функцию, которая меняет 
+первую букву в строке на большую и возвращает строку измененную
 
-// const numbers = [1, 2, 3, 4, 5];
-// const newArray = [];
+capitalize('') // ''
+capitalize('a') // 'A'
+capitalize('apple') // 'Apple'
+*/
 
-// for (let i = 0; i < numbers.length; i++) {
-//     // if (i >= 1 && i <= 3) continue
-//     if (i < 1 || i > 3) {
-//         newArray.push(numbers[i])
-//     }
+// const capitalize = (string) => {
+//     if (string === '') return ''
+
+//     if (string.legth === 1) return string[0].toUpperCase();
+
+//     // return string[0].toUpperCase() + string.slice(1)
+//     return `${string[0].toUpperCase()}${string.slice(1)}`
 // }
 
-// splice
+// capitalize('apple'); // 'Apple'
+// capitalize('a'); // 'Apple'
+// capitalize(''); // 'Apple'
+// capitalize('javascript'); // 'Javascript'
 
-// const numbers = [1, 2, 3, 4, 5];
-// numbers.splice(1, 3); // [2, 3, 4]
+/*
+Написать функцию, которая удалят из массива
+ложные (falsy) значения и возвращает новый массив
 
-// // модифицирует исходный массив
-// console.log(numbers); // [1, 5] 
+removeFalsy([false, '', ' ', 1, ]) // [' ', 1]
+removeFalsy([]) // []
+removeFalsy([undefined, null, NaN, 0]) // []
+*/
 
-// const newNumbers = numbers.slice();
-// newNumbers.splice(1, 3);
+// const removeFalsy = (array) => {
+//     if (array.length === 0) return array
 
-// // Иcходный массив не изменен
-// console.log(numbers);
-// console.log(newNumbers);
+//     // const newArray = [];
 
-// const numbers = [1, 2, 3, 4, 5];
-// numbers.splice(0, 1); // удаление одного элемента - первого
-// numbers.splice(2, 1); // удаление одного элемента - на 2 индексе
-// numbers.splice(1); // удаление всех элементов с 1 индекса
-// console.log(numbers)
+//     // for (const item of array) {
+//     //     if (item) {
+//     //         newArray.push(item) 
+//     //     }
+//     // }
 
-// numbers.splice(2, 2, 10, 10);
-// console.log(numbers);
+//     // return newArray
 
-// Concat
-// const strings1 = ['Я', 'изучаю']
-// const strings2 = ['JavaScript']
+//     return array.filter((item) => item);
+// }
 
-// console.log(strings1.concat(strings2));
+// console.log(removeFalsy([false, '', ' ', 1, ]));
+// console.log(removeFalsy([undefined, null, NaN, 0]));
+// console.log(removeFalsy([]));
+// console.log(removeFalsy([{age: 12,}, {}, [], [1, 2], null, '', 1, 0, 12]));
 
-// console.log(strings1.concat(strings2, ['blabla', 'blabla']));
-// console.log(strings1.concat(strings2, 'blabla', 'blabla'));
+// всегда true
+// if ([]) {}
 
-// indexOf, lastIndexOf, includes
+// if ({}) {}
 
-// const numbers = [2, 2, 1, 12, 1, 5, 10];
+// if (() => {}) {}
 
-// console.log(numbers.indexOf(1)); // 2
-// console.log(numbers.indexOf(100)); // -1
-// console.log(numbers.lastIndexOf(1)); // 4
-// console.log(numbers.includes(1)); // true
-// console.log(numbers.includes(100)); // false
+// Обычно проверяем на пустоту
 
-// const users = [
-//     {id: 1},
-//     {id: 2},
-//     {id: 3},
-// ]
+// const arr = [1, 2, 3];
 
-// console.log(users.includes({id: 1})); // false
-// console.log(users.lastIndexOf({id: 1})); // -1
-// console.log(users.indexOf({id: 1})); // -1
+// if (arr.length > 0) {
 
-// find
+// } else {
 
-// const foundUser = users.find((user) => {
-//     return user.id === 1
-// })
+// }
 
-// console.log(foundUser);
+// let obj = null;
+// let arr = null;
 
-// const foundUser = users.find((user) => {
-//     return user.id === 10
-// })
+// if (arr) {
 
-// console.log(foundUser); // undefined
+// }
 
-// const strings = ['string', 'str', 'b', 'blablablabla', 'a'];
+// if (obj) {
+    
+// }
 
-// const str = strings.find((string) => {
-//     // if (string.length === 1) return true
+// arr = [];
+// obj = {};
 
-//     // return false
+// if (arr) {
 
-//     return string.length === 1
-// })
+// }
 
-// console.log(str);
+// if (obj) {
+    
+// }
 
-// const firstIndexString = strings.find((string, index) => {
-//     return index === 1
-// })
+// split
 
-// console.log(firstIndexString);
+// let str = 'hello world'; 
+// console.log(str.split()); // ['hello world']
+// console.log(str.split('')); // ['h', 'e',... 'd']
+// console.log(str.split(' ')); // ['hello', 'world']
 
-// findIndex
+// str = 'hello, world string1 string2'
 
-// const stringIndex = strings((string) => {
-//     return string.length === 1
-// })
+// console.log(str.split(', ')); // ['hello', 'world string1 string2']
 
-// console.log(stringIndex);
+// str = 'hello, world string1, string2'
 
-// const numberArrays = [[1, 2], [1, 2], [3, 3, 3], [4, 4, 4]]
+// console.log(str.split(', ')); // ['hello', 'world string1', 'string2']
 
-// const array = numberArrays.find((array) => {
-//     return array.length === 3
-// })
+// join
+// let array = ['hello', 'world', 'string2'];
 
-// console.log(array); // [3, 3, 3]
+// console.log(array.join());
+// console.log(array.join(''));
+// console.log(array.join(' '));
 
-// const arrayIndex = numberArrays.findIndex((array) => {
-//     return array.length === 3
-// })
+/*
+Написать функцию, которая возводит первую букву
+всех слов в строке в верхний регистр и возвращает изм. строку
 
-// console.log(arrayIndex); // 2
+capitalizeWords('Я изучаю javascript на learn.js')
+'Я Изучаю Javascript На Learn.js'
+*/
 
-// filter
+// const capitalizeWords = (string) => {
+//     // Решение 1
+//     // const words = string.split(' ');
 
-// const numbers = [1, 2, 3, 4, 5];
+//     // const result = [];
 
-// const evenNumbers = numbers.filter((num) => {
-//     return num % 2 === 0
-// })
+//     // for (const word of words) {
+//     //     result.push(`${word[0].toUpperCase()}${word.slice(1)}`)
+//     // }
 
-// console.log(evenNumbers);
+//     // return result.join(' ');
 
-// console.log([1, 2].filter(num => num > 2)); // []
+//     // Решение 2 - более современное
+//     return string.split(' ')
+//     .map((word) => {
+//         return `${word[0].toUpperCase()}${word.slice(1)}`
+//     })
+//     .join(' ')
+// }
 
-// const numberArrays = [[1, 2], [1, 2], [3, 3, 3], [4, 4, 4]]
+// console.log(capitalizeWords('Я, изучаю, javascript. на learn.js'))
 
-// const newArray = numberArrays.filter((array) => {
-//     return array.includes(4)
-// })
-
-// console.log(newArray)
-
-// forEach
-
-// const numbers = [10, 10, 10, 10];
-// const newArray = numbers.forEach((num) => {
-//     console.log(num);
-
-//     return num
-// })
-
-// console.log(newArray);
-
-// const newArray = [];
-
-// numbers.forEach((num) => {
-//     newArray.push(num)
-// })
-
-// console.log(newArray); // [10, 10, 10, 10]
-
-// map
-
-// const numbers = [1, 2, 3];
-
-// const newArray = numbers.map((num) => num * 2);
-// const newArray = numbers.map((num) => {}); // [3 undefined]
-
-// console.log(newArray);
-
-// Комбинация методов массивов
+// reduce
 
 // const numbers = [1, 2, 3, 4, 5];
 
-// const numberDivisibleByEight = numbers
-// .map((num) => num * 2) // [2, 4, 6, 8, 10]
-// .filter((num) => num > 4) // [6, 8, 10]
-// .find((num) => num % 8 === 0) // 8
+// const sum = numbers.reduce(
+//     (acc, num) => {
+//         acc += num
+//         console.log(acc)
+//         return acc
+//     },
+//     0 // 0 - исходное значение для acc
+// )
 
-// console.log(numberDivisibleByEight); // 8
+// исходное значение acc === 1
+// цикл начнется с 2 элемента
+// const sum = numbers.reduce(
+//     (acc, num) => {
+//         acc += num
+//         console.log(acc)
+//         return acc
+//     }
+// )
 
-// Задача - filter
+// Решение короче
+// const sum = numbers.reduce((acc, num) => acc += num)
 
-// const numbers = [1, 2, 3, 4, 5];
+// console.log(sum);
 
-// const result = numbers.filter((num) => {
-//     return num % 2
-// })
+/* 
+Задача - получить объект из массива
 
-// sort
+const numbers = [0, 1, 2, 3, 4, 5];
 
-// const numbers = [0, -1, -10, 3, 2, 11, 12];
-// По умолчанию как строки
-// numbers.sort();
-// console.log(numbers);
+Результат
 
-// numbers.sort((num1, num2) => {
-//     if (num1 > num2) return 1
-//     if (num1 < num2) return -1
-//     return 0
-// })
+{
+    0: 0,
+    1: 1,
+    2: 2,
+    3: 3,
+    4: 4,
+    5: 5
+}
 
-// numbers.sort((num1, num2) => num1 - num2)
+*/
 
-// const sortedNumbers = numbers
-// .sort((num1, num2) => num1 - num2);
+const numbers = [0, 1, 2, 3, 4, 5];
 
-// console.log(numbers);
-// console.log(sortedNumbers);
+// Решение 1
+// const obj = {};
 
-// console.log(sortedNumbers === numbers); // true
+// for (const num of numbers) {
+//     obj[num] = num
+// }
 
-// Копия и сортировка
+// console.log(obj);
 
-// const sortedNumbers = numbers.slice()
-// .sort((num1, num2) => num1 - num2);
+// Решение 2
+// const obj = numbers.reduce((result, item) => {
+//     result[item] = item;
+//     return result
+// }, {})
 
-// console.log(numbers);
-// console.log(sortedNumbers);
+// Решение короче
+// const obj = numbers.reduce((result, item) => 
+// (result[item] = item, result), {})
 
-// console.log(sortedNumbers === numbers); // false
+// console.log(obj);
 
-// Отсортировать массив юзеров по возр. по id
-// const users = [
-//     {id: 3},
-//     {id: 1},
-//     {id: 4},
-//     {id: 2},
-//     {id: 5},
-// ]
-
-// const sortedUsers = users
-// .slice()
-// .sort((a, b) => a.id - b.id);
-
-// // console.log(sortedUsers);
-// // console.log(users);
-
-// // объекты те же самые, но порядок поменялся
-// users[0].id = 111111
-// console.log(users);
-// console.log(sortedUsers);
+// // Домашка - удалить дубли и отсортировать
+// const numbers = [1, 1, 1, 2, 0, 10, 15, 5, 20, 15, 30, 30];
+// Результат - [0, 1, 2, 5, 10, 15, 20, 30]
