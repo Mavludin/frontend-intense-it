@@ -14,14 +14,45 @@ const body = document.body;
 // console.log('firstChild', body.firstElementChild);
 // console.log('lastChild', body.lastElementChild);
 
-const tBody = document.body.firstElementChild.firstElementChild;
-const tableRows = Array.from(tBody.children);
+// const tBody = document.body.firstElementChild.firstElementChild;
+// const tableRows = Array.from(tBody.children);
 
-for (let i = 0; i < tableRows.length; i++) {
-    for (let j = 0; j < tableRows[i].children.length; j++) {
-        if (i === j) {
-            tableRows[i].children[j].style.backgroundColor = 'red'
-        }
-    }
-}
+// for (let i = 0; i < tableRows.length; i++) {
+//     for (let j = 0; j < tableRows[i].children.length; j++) {
+//         if (i === j) {
+//             tableRows[i].children[j].style.backgroundColor = 'red'
+//         }
+//     }
+// }
 
+// const divElement = document.body.firstElementChild;
+// const ulElement = divElement.nextElementSibling;
+// const lastLiElement = ulElement.lastElementChild;
+
+// let element = null;
+
+// for (const item of ulElement.children) {
+//     if (item.textContent === 'Пит') {
+//         element = item;
+//         break;
+//     }
+// }
+
+// for (let i = 0; i < ulElement.children.length; i++) {
+//     if (ulElement.children[i].textContent === 'Пит') {
+//         element = ulElement.children[i];
+//         console.log(i)
+//         break;
+//     }
+// }
+
+// console.log(element);
+
+// const element = [...ulElement.children].find((item, index) => {
+//     return item.textContent === 'Пит'
+// })
+
+// console.log(element);
+
+// console.log(ulElement.lastChild.nextSibling);
+// console.log(ulElement.children[0].previousSibling);
