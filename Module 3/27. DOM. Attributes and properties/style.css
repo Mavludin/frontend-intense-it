@@ -1,0 +1,22 @@
+/* form[name='search'] {
+    color: red
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+
+    width: 200px;
+    justify-content: flex-start;
+} */
+
+/* .orange {
+    color: orange;
+    text-decoration: none;
+} */
+
+/* a[href*="://"]:not([href^="http://internal.com"]) {
+    color: orange;
+    text-decoration: none;
+} */
+
