@@ -1,0 +1,40 @@
+body {
+    margin: 0;
+}
+
+#block, .abc {
+    background-color: green;
+    width: 300px;
+}
+
+div {
+    width: auto;
+}
+
+ul {
+    padding: 0;
+}
+
+li {
+    list-style-type: none;
+    font-size: 18px;
+    color: crimson;
+}
+
+p {
+    background-color: goldenrod;
+    font-weight: bold;
+    padding: 10px;
+}
+
+#example {
+    width: 300px;
+    height: 200px;
+    border: 25px solid #E8C48F;
+    padding: 20px;
+    overflow: auto;
+}
+
+#test {
+    height: 1000px;
+}
