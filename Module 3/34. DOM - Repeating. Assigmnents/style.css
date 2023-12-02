@@ -1,0 +1,63 @@
+/* body {
+    margin: 0;
+}
+
+#parent {
+    width: 100px;
+    border: 1px solid black;
+    padding: 20px;
+}
+
+#child {
+    background-color: green;
+    height: 50px;
+}
+
+#test {
+    height: 1000px;
+}
+
+.notification {
+    position: fixed;
+    z-index: 1000;
+    padding: 5px;
+    border: 1px solid black;
+    font-size: 20px;
+    background: white;
+    text-align: center;
+}
+
+.welcome {
+    background: #b80000;
+    color: yellow;
+} */
+
+body,
+html {
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+#matrix {
+  width: 400px;
+  margin: auto;
+  overflow: auto;
+  text-align: justify;
+}
+
+#arrowTop {
+  height: 9px;
+  width: 14px;
+  color: green;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  cursor: pointer;
+  display: none;
+}
+
+#arrowTop::before {
+  content: '▲';
+}
