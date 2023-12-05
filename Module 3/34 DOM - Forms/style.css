@@ -1,0 +1,10 @@
+form {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  row-gap: 10px;
+}
+
+h2 {
+  margin: 0;
+}
