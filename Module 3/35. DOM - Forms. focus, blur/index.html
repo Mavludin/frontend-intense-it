@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html>
+  <title>Document</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+  <form name="form">
+    <input type="text" name="username" autofocus>
+    <div class="error">Имя пользователя неверно</div>
+    <input type="password" name="password">
+
+    <div>
+      <h2>Выберите пол</h2>
+      <label for="male">
+        Мужской
+        <input type="radio" name="gender" id="male" required />
+      </label>
+      <label for="female">
+        Женский
+        <input type="radio" name="gender" id="female" readonly />
+      </label>
+    </div>
+
+    <select name="courses" required value="">
+      <option value="default" disabled selected>Выберите курс</option>
+      <option value="frontend">Frontend</option>
+      <option value="backend">Backend</option>
+    </select>
+  </form>
+
+  <!-- <div id="view" class="view">Текст</div> -->
+
+  <script src="./script.js"></script>
+</body>
+</html>
