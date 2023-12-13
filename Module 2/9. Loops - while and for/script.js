@@ -97,6 +97,15 @@
 
 // console.log(sum);
 
+// let i = 0;
+// for (; i < 5; i++) {
+
+// }
+
+// // Бесконечный цикл - так лучше не делать
+// for (;;) {
+// }
+
 // let i = 3;
 
 // while (i) {
@@ -111,3 +120,50 @@
 
 // for (let i = 0; i < 5; ++i) console.log( i );
 // for (let i = 0; i < 5; i++) console.log( i );
+
+// break
+
+// for (let i = 0; i < 5; i++) {
+//     // console.log(i);
+//     if (i === 2) break;
+
+//     console.log(i);
+// }
+
+// continue
+
+// for (let i = 0; i < 5; i++) {
+//     // if (i % 2 === 0) {
+//     //     console.log(i);
+//     // }
+
+//     if (i % 2 !== 0) continue;
+
+//     console.log(i);
+// }
+
+// Задача - Замените for на while
+// for (let i = 0; i < 3; i++) {
+//     console.log( `number ${i}!` );
+// }
+
+// let i = 0;
+// while (i < 3) {
+//     console.log( `number ${i}!` );
+
+//     i++;
+// }
+
+// Задача - Повторять цикл, пока ввод неверен
+let userInput = '';
+
+while (userInput <= 100) {
+    if (userInput === null) break;
+
+    userInput = prompt('Введите число, большее 100');
+}
+
+console.log(userInput);
+
+// 1, 2, 3, 4, 5, 6
+// 6 [5, 4, 3] === число 6 надо пропустить
