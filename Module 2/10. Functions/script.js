@@ -138,24 +138,24 @@
 - Число - ноль
 */
 
-function checkNumber(num) {
-    if (num > 0) {
-        console.log(`Число ${num} положительное`);
-    } else if (num < 0) {
-        console.log(`Число ${num} отрицательное`);
-    } else {
-        console.log(`Число - ноль`);
-    }
-}
+// function checkNumber(num) {
+//     if (num > 0) {
+//         console.log(`Число ${num} положительное`);
+//     } else if (num < 0) {
+//         console.log(`Число ${num} отрицательное`);
+//     } else {
+//         console.log(`Число - ноль`);
+//     }
+// }
 
-checkNumber(1); // Пол
-checkNumber(-5); // Отр
-checkNumber(0); // Ноль
+// checkNumber(1); // Пол
+// checkNumber(-5); // Отр
+// checkNumber(0); // Ноль
 
-let num1 = 10;
-let num2 = 20;
+// let num1 = 10;
+// let num2 = 20;
 
-checkNumber(num1 - num2); // Отр
+// checkNumber(num1 - num2); // Отр
 
 /*
 Задача - написать функцию greeting(firstName, lastName),
@@ -165,3 +165,148 @@ checkNumber(num1 - num2); // Отр
 greeting('Иван', 'Иванов');
 'Добро пожаловать Иван Иванов!!!'
 */
+
+// function greeting(firstName, lastName) {
+//     console.log(`Добро пожаловать ${firstName} ${lastName}!!!`)
+// }
+
+// greeting('Иван', 'Иванов');
+// greeting('Магомед', 'Магомедов');
+// greeting('Alex', 'Johns');
+
+// const firstName = prompt('Введите имя');
+// const lastName = prompt('Введите фамилию');
+
+// greeting(firstName, lastName);
+
+// Глобальные переменные лучше не использовать часто
+// let num1 = 10;
+// let num2 = 10;
+
+// function getSum() {
+//     console.log(num1 + num2);
+// }
+
+// function getSum(num1, num2) {
+//     console.log(num1 + num2);
+// }
+
+// getSum(1, 2); //
+// getSum(2, 2); // 
+// getSum(5, 2); // 
+
+// const PI = 3.14;
+
+// function foo1(num) {
+//     console.log(PI * num);
+// }
+
+// function foo2(num) {
+//     console.log(PI - num);
+// }
+
+// function foo3(num) {
+//     console.log(PI / num);
+// }
+
+// foo1(1);
+// foo2(5);
+// foo3(10);
+
+// ЧТо является локальным для функции
+// function foo(num1, num2) {
+//     let str = 'string';
+//     const PI = 3.14;
+// }
+
+// Локально можно получить доступ редактировать то, что есть глобально
+// let num = 10;
+
+// function foo() {
+//     num = 50;
+
+//     console.log(num);
+// }
+
+// console.log(num);
+// foo();
+
+// 
+
+// function foo(num) {
+//     let num = 10;
+// }
+
+// let a = 10;
+// // let a = 50;
+// a = 50;
+
+// Параметры по умолчанию
+// function getSum(a = 0, b = 0) {
+
+//     // Старые способы объявления параметров по умолчанию
+//     // if (b === undefined) b = 0
+//     // if (a === undefined) a = 0
+
+//     // b = b || 0
+//     // a = a || 0
+//     // console.log(a + b);
+// }
+
+// getSum(1, 2); // 3
+// getSum(1); // NaN (1 + undefined), т.к. b === undefined
+// getSum(); // 
+
+// Оператор return
+
+// function getSum(a, b) {
+//     // Просто выводим в консоль
+//     // console.log(a + b); 
+
+//     // Возвращаем значение суммы, которое затем можно использовать
+//     return a + b;
+// }
+
+// console.log(getSum(1, 2)); // console.log(3)
+
+// const sum1 = getSum(1, 2);
+// const sum2 = getSum(-4, 2);
+// const sum3 = getSum();
+
+// function checkNumber(num) {
+//     if (num > 0) {
+//         console.log(`Число ${num} положительное`);
+//     } else if (num < 0) {
+//         console.log(`Число ${num} отрицательное`);
+//     } else {
+//         console.log(`Число - ноль`);
+//     }
+// }
+
+// checkNumber(sum1);
+// checkNumber(sum2);
+// checkNumber(sum3);
+
+// По умолчанию функция возвращает undefined
+// function foo() {
+//     // Какой-то код без return
+//     // Пустой return тоже undefined
+//     return
+// }
+
+// console.log(foo());
+
+// Перевод строки после return может вызвать проблемы
+// function foo() {
+//     // Так не стоит делать - вернет undefined
+//     // return
+//     //     'Значение'
+
+//     // Можно использовать скобки
+//     return (
+//         'Значение'
+//     )
+
+// }
+
+// console.log(foo())
