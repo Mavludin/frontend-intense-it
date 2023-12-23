@@ -60,17 +60,43 @@
 //                     'User-Agent': name
 //                 }
 //             });
-//         const user = await res.json();
+        
+//         if (res.ok) {
+//             const user = await res.json();
+//             users.push(user);
 
-//         users.push(user);
-
+//         } else {
+//             users.push(null);
+//         }
 //     }
 
 //     return users
 // }
 
-// getUsers(['mavludin', 'mavludin', 'mavludin'])
+// getUsers(['mavludin', 'gaLeoNnn', 'rasul-sulaev'])
 //     .then(console.log)
+
+const getUsersInParallel = async (names) => {
+    const promises = [];
+
+    for (const name of names) {
+        const job = 
+             fetch(`https://api.github.com/users/${name}`, {
+                headers: {
+                    'User-Agent': name
+                }
+            }).then((res) => {
+                return res.json()
+            })
+            
+        promises.push(job);
+    }
+
+    return Promise.all(promises);
+}
+
+getUsersInParallel(['mavludin', 'gaLeoNnn', 'rasul-sulaev'])
+    .then((result) => console.log(result))
 
 // // POST - запрос
 // const POSTS_URL = 'https://658073cf6ae0629a3f5540e5.mockapi.io/posts';
