@@ -1,0 +1,19 @@
+form {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    gap: 12px;
+}
+
+h1 {
+    display: none;
+}
+
+#laptops {
+    display: flex;
+}
+
+.error {
+    display: none;
+    color: crimson;
+}
