@@ -1,7 +1,13 @@
 import './Button.css'
 
-export const Button = () => {
+export const Button = ({ title = 'Click', onClick }) => {
+    const handleClick = () => {
+        console.log('WORKS!!!')
+    }
+
     return (
-        <button className='button'>Click</button>
+        <button onClick={onClick} className='button'>
+            {title}
+        </button>
     )
 }

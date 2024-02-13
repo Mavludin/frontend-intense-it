@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+// import MyApp from './App.jsx' можно и под другим названием
 import App from './App.jsx'
 import './index.css'
 
