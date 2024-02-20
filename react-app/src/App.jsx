@@ -1,87 +1,104 @@
-// Условная отрисовка
-// Условный рендеринг
-// Conditional rendering
+// Списки
 
-import './App.css'
-import { CustomHeader } from './components/CustomHeader';
-import { UserButton } from './components/UserButton';
+import './App.css';
+import { Users } from './components/Users';
 
-const numbers = [];
+// const items = [
+//   'Item 1',
+//   'Item 2',
+//   'Item 3',
+//   'Item 4',
+// ]
 
-import { UserItem } from './components/UserItem'
-
-// const isFirstUserAdult = true;
-// const isSecondUserAdult = false;
-// const isThirdUserAdult = true;
-
-// function Item({ name, importance }) {
-//   return (
-//     <li className="item">
-//       {name} {importance > 0 && <i>(Важность: {importance})</i>}
-//     </li>
-//   )
-// }
+const users = [
+  {
+    id: 1,
+    name: 'User 1',
+    age: 22,
+  },
+  {
+    id: 2,
+    name: 'User 2',
+    age: 0,
+  },
+  {
+    id: 3,
+    name: 'User 3',
+    age: 20,
+  },
+  {
+    id: 4,
+    name: 'User 4',
+    age: 40,
+  },
+  {
+    id: 5,
+    name: 'User 5',
+    jobs: [
+      'Teacher',
+      'Waiter'
+    ]
+    // age: 40,
+  }
+]
 
 function App() {
-
-  // return (
-  //   <div className='app'>
-  //     <ul>
-  //       {/* {isFirstUserAdult ? <li>User 1</li> : null}
-  //       {isSecondUserAdult ? <li>User 2</li> : null}
-  //       {isThirdUserAdult ? <li>User 3</li> : null} */}
-
-  //       {/* {isFirstUserAdult ? <li>User 1 (Adult)</li> : <li>User 1</li>}
-  //       {isSecondUserAdult ? <li>User 2 (Adult)</li> : <li>User 2</li>}
-  //       {isThirdUserAdult ? <li>User 3 (Adult)</li> : <li>User 3</li>} */}
-  //       <UserItem name="Alex" isAdult />
-  //       <UserItem name="James" />
-  //       <UserItem name="John" isAdult={true} />
-  //       <UserItem name="Gabriel" />
-  //     </ul>
-
-  //     {/* В таком случае получим на экране 0, если массив пустой */}
-  //     {/* {numbers.length && `Отобразили массив`} */}
-
-  //     {/* Как это можно решить */}
-  //     {/* {numbers.length > 0 && `Отобразили массив`}
-  //     {!!numbers.length && `Отобразили массив`}
-  //     {Boolean(numbers.length) && `Отобразили массив`} */}
-  //   </div>
-  // )
-
-  // return (
-  //   <section>
-  //       <h1>Sally Ride's Packing List</h1>
-  //       <ul>
-  //           <Item importance={9} name="Space suit" />
-  //           <Item
-  //               importance={0}
-  //               name="Helmet with a golden leaf"
-  //           />
-  //           <Item importance={6} name="Photo of Tam" />
-  //       </ul>
-  //   </section>
-  // )
-
-  const isLoggedIn = true;
-
-  // const decorator = isLoggedIn ? <UserButton /> : null
-
-  const decorator = isLoggedIn ? (
-    (
-      <a className="userButton" href="google.com">
-        {/* <img src="" alt="" /> */}
-        User Button
-      </a>
-    )
-  ) : null
+  const usersWithAges = users.filter((user) => user.age !== undefined)
 
   return (
     <div className='app'>
-      {/* <CustomHeader decorator={decorator} /> */}
+      {/* <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+        <li>Item 4</li>
+      </ul> */}
+      {/* <ul>
+        {items.map((item) => {
+          return <li key={item}>{item}</li>
+        })}
+      </ul> */}
+      {/* <ul>
+        {users.map((user) => {
+          if (user.age === undefined) {
+            return (
+              <li>
+                <div>Name: {user.name}</div>
+              </li>
+            )
+          }
 
-      <CustomHeader withUserButton />
+          return (
+            <li key={user.id}>
+              <div>Name: {user.name}</div>
+              {user.age === undefined ? null : <div>Age: {user.age}</div>}
+
+              {user.age !== undefined && <div>Age: {user.age}</div>}
+            </li>
+          )
+        })}
+      </ul> */}
+
+      {/* <ul>
+        {usersWithAges.map((user) => {
+          return (
+            <li key={user.id}>
+              <div>Name: {user.name}</div>
+              <div>Age: {user.age}</div>
+            </li>
+          )
+        })}
+      </ul> */}
+
+      <div>
+        <h2>All users</h2>
+        <Users users={users} />
+      </div>
+
+      <div>
+        <h2>Users with ages</h2>
+        <Users users={usersWithAges} />
+      </div>
     </div>
   )
 }
