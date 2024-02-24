@@ -1,7 +1,8 @@
-export const Footer = () => {
+export const Footer = ({ date, children }) => {
     return (
         <footer>
-            <h2>Footer</h2>
+            <h2>Footer: {date}</h2>
+            {children}
         </footer>
     )
 }

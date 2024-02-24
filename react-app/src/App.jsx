@@ -1,104 +1,155 @@
-// Списки
+// События
 
 import './App.css';
-import { Users } from './components/Users';
 
-// const items = [
-//   'Item 1',
-//   'Item 2',
-//   'Item 3',
-//   'Item 4',
-// ]
+import { Button } from './components/Button/Button.jsx'
+import { Footer } from './components/Footer/Footer.jsx';
+import { TodoItem } from './components/TodoItem/index.jsx';
 
-const users = [
+/*
+- Отобразить на экране список задач
+<ul>
+  <li>Пойти на пробежку</li>
+  <li>Подготовиться к экзамену</li>
+</ul>
+- При клике на элемент вывести в консоль такой объект:
+{
+  index: индекс элемента, на который кликнули,
+  id: значение,
+  title: значение,
+  done: значение,
+}
+- Если задача уже завершена, то вывести название этой задачи как перечеркнутое
+
+*/
+const todos = [
   {
     id: 1,
-    name: 'User 1',
-    age: 22,
+    title: 'Пойти на пробежку',
+    done: true,
   },
   {
     id: 2,
-    name: 'User 2',
-    age: 0,
+    title: 'Подготовиться к экзамену',
+    done: false,
   },
   {
     id: 3,
-    name: 'User 3',
-    age: 20,
+    title: 'Покушать',
+    // done: []
   },
   {
     id: 4,
-    name: 'User 4',
-    age: 40,
-  },
-  {
-    id: 5,
-    name: 'User 5',
-    jobs: [
-      'Teacher',
-      'Waiter'
-    ]
-    // age: 40,
+    title: 'Убраться дома',
+    done: true,
   }
 ]
 
 function App() {
-  const usersWithAges = users.filter((user) => user.age !== undefined)
+
+  // const handleClick = () => {
+  //   console.log('Clicked!!!')
+  // }
+
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+
+  //   console.log({ 
+  //     login: e.target.login.value,
+  //     password: e.target.password.value
+  //   })
+  //   console.log('Form Submitted!!');
+  // }
 
   return (
     <div className='app'>
+      {/* <button onClick={
+        // () => {
+        //   console.log('Clicked!')
+        // }
+
+        // function() {
+        //   console.log('Clicked!')
+        // }
+      }>Click</button> */}
+
+      {/* <button onClick={handleClick}>Click</button> */}
+      {/* <Button title='Click' onClick={() => console.log('Clicked')} />
+      <Button title='Add' onClick={(e) => {
+        console.log('Added');
+
+        console.dir(e.target)
+      }} />
+      <Button title='Submit' onClick={() => console.log('Submitted')} />
+      <Button title='Log out' onClick={() => console.log('Logged out')} /> */}
+
+      {/* <Footer date='11.05.2020' />
+
+      <Footer date='22.05.2022'>
+        <div>123</div>
+      </Footer>
+
+      <Footer date='11.05.2020'>
+        <div>111</div>
+        <div>222</div>
+        <div>333</div>
+      </Footer>
+
+      <Footer date='11.05.2020'>
+        <div>111</div>
+        <div>222</div>
+        <div>333</div>
+      </Footer> */}
+
+      {/* <form onSubmit={handleSubmit}>
+        <h2>Login</h2>
+        <div>
+          <input type="text" name="login" />
+        </div>
+        <div>
+          <input type="password" name="password" />
+        </div>
+
+        <button>Submit</button>
+      </form> */}
+
+      <h2>Задачи</h2>
       {/* <ul>
-        <li>Item 1</li>
-        <li>Item 2</li>
-        <li>Item 3</li>
-        <li>Item 4</li>
+        <li>Задача 1</li>
+        <li>Задача 2</li>
+        <li>
+          <strike>Задача 3</strike>
+        </li>
       </ul> */}
-      {/* <ul>
-        {items.map((item) => {
-          return <li key={item}>{item}</li>
-        })}
-      </ul> */}
-      {/* <ul>
-        {users.map((user) => {
-          if (user.age === undefined) {
-            return (
-              <li>
-                <div>Name: {user.name}</div>
-              </li>
-            )
-          }
+      {todos.map((todo, index) => {
+        const logTodoData = () => {
+          console.log({
+            index,
+            id: todo.id,
+            title: todo.title,
+            done: todo.done,
+          })
+        }
 
-          return (
-            <li key={user.id}>
-              <div>Name: {user.name}</div>
-              {user.age === undefined ? null : <div>Age: {user.age}</div>}
+        // return (
+        //   <li key={todo.id}>
+        //     <button onClick={logTodoData}>
+        //       {todo.done === true 
+        //         ? <strike>{todo.title}</strike>
+        //         : todo.title
+        //       }
+        //     </button>
+        //   </li>
+        // )
 
-              {user.age !== undefined && <div>Age: {user.age}</div>}
-            </li>
-          )
-        })}
-      </ul> */}
-
-      {/* <ul>
-        {usersWithAges.map((user) => {
-          return (
-            <li key={user.id}>
-              <div>Name: {user.name}</div>
-              <div>Age: {user.age}</div>
-            </li>
-          )
-        })}
-      </ul> */}
-
-      <div>
-        <h2>All users</h2>
-        <Users users={users} />
-      </div>
-
-      <div>
-        <h2>Users with ages</h2>
-        <Users users={usersWithAges} />
-      </div>
+        return (
+          <TodoItem
+            key={todo.id}
+            todo={todo}
+            onClick={logTodoData}
+          />
+        )
+      })}
     </div>
   )
 }
