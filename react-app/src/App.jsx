@@ -1,155 +1,90 @@
-// События
+// Состояние (state)
+// hooks (хуки)
+// useState
 
+// import { useState } from 'react';
+import { Counter } from './components/Counter';
 import './App.css';
-
-import { Button } from './components/Button/Button.jsx'
-import { Footer } from './components/Footer/Footer.jsx';
-import { TodoItem } from './components/TodoItem/index.jsx';
+import { ShowMoreText } from './components/ShowMoreText';
+import { CounterBy } from './components/CounterBy';
 
 /*
-- Отобразить на экране список задач
-<ul>
-  <li>Пойти на пробежку</li>
-  <li>Подготовиться к экзамену</li>
-</ul>
-- При клике на элемент вывести в консоль такой объект:
-{
-  index: индекс элемента, на который кликнули,
-  id: значение,
-  title: значение,
-  done: значение,
-}
-- Если задача уже завершена, то вывести название этой задачи как перечеркнутое
-
+Создать компонент CounterBy, 
+в котором есть состоние count(0) и проп incrementBy
+- При клике на кнопку 
+Increment by {incrementBy}, 
+увеличить значение count на incrementBy
+- Если проп incrementBy не передан, 
+то по умолчанию = 1
 */
-const todos = [
-  {
-    id: 1,
-    title: 'Пойти на пробежку',
-    done: true,
-  },
-  {
-    id: 2,
-    title: 'Подготовиться к экзамену',
-    done: false,
-  },
-  {
-    id: 3,
-    title: 'Покушать',
-    // done: []
-  },
-  {
-    id: 4,
-    title: 'Убраться дома',
-    done: true,
-  }
-]
 
 function App() {
+  // let count = 0;
 
-  // const handleClick = () => {
-  //   console.log('Clicked!!!')
+  // const incrementCount = () => {
+  //   count = count + 1;
+
+  //   console.log(count);
   // }
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
+  // const counter = useState(0);
+  // const count = counter[0]
+  // const setCount = counter[1]
 
-  //   console.log({ 
-  //     login: e.target.login.value,
-  //     password: e.target.password.value
-  //   })
-  //   console.log('Form Submitted!!');
+  // const [count, setCount] = useState(0);
+  // const [showMore, setShowMore] = useState(true);
+
+  // const incrementCount = () => {
+  //   setCount(count + 1);
   // }
+
+  // const resetCounter = () => {
+  //   setCount(0);
+  // }
+
+  // const toggleShowMore = () => {
+  //   setShowMore(!showMore)
+  // }
+
+  // const [state, setState] = useState()
 
   return (
     <div className='app'>
-      {/* <button onClick={
-        // () => {
-        //   console.log('Clicked!')
-        // }
+     {/* <h1>{count}</h1>
 
-        // function() {
-        //   console.log('Clicked!')
-        // }
-      }>Click</button> */}
+    <div>
+     <button onClick={incrementCount}>Increment</button>
+     <button onClick={resetCounter}>Reset counter</button>
+    </div> */}
 
-      {/* <button onClick={handleClick}>Click</button> */}
-      {/* <Button title='Click' onClick={() => console.log('Clicked')} />
-      <Button title='Add' onClick={(e) => {
-        console.log('Added');
+    {/* <Counter />
 
-        console.dir(e.target)
-      }} />
-      <Button title='Submit' onClick={() => console.log('Submitted')} />
-      <Button title='Log out' onClick={() => console.log('Logged out')} /> */}
+    <Counter />
 
-      {/* <Footer date='11.05.2020' />
+    <Counter />
 
-      <Footer date='22.05.2022'>
-        <div>123</div>
-      </Footer>
+    <ShowMoreText />
+    
+    <ShowMoreText /> */}
 
-      <Footer date='11.05.2020'>
-        <div>111</div>
-        <div>222</div>
-        <div>333</div>
-      </Footer>
+    {/* <div>
+      <button onClick={toggleShowMore}>
+        Show more
+      </button>
 
-      <Footer date='11.05.2020'>
-        <div>111</div>
-        <div>222</div>
-        <div>333</div>
-      </Footer> */}
+      {showMore && (
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem cum iure ipsa modi iusto eligendi, architecto accusamus in, animi qui eum officia suscipit quibusdam, totam laborum ipsam error ea aspernatur!
+        </p>
+      )}
 
-      {/* <form onSubmit={handleSubmit}>
-        <h2>Login</h2>
-        <div>
-          <input type="text" name="login" />
-        </div>
-        <div>
-          <input type="password" name="password" />
-        </div>
+    </div> */}
 
-        <button>Submit</button>
-      </form> */}
+    <CounterBy />
 
-      <h2>Задачи</h2>
-      {/* <ul>
-        <li>Задача 1</li>
-        <li>Задача 2</li>
-        <li>
-          <strike>Задача 3</strike>
-        </li>
-      </ul> */}
-      {todos.map((todo, index) => {
-        const logTodoData = () => {
-          console.log({
-            index,
-            id: todo.id,
-            title: todo.title,
-            done: todo.done,
-          })
-        }
+    <CounterBy incrementBy={2} />
 
-        // return (
-        //   <li key={todo.id}>
-        //     <button onClick={logTodoData}>
-        //       {todo.done === true 
-        //         ? <strike>{todo.title}</strike>
-        //         : todo.title
-        //       }
-        //     </button>
-        //   </li>
-        // )
-
-        return (
-          <TodoItem
-            key={todo.id}
-            todo={todo}
-            onClick={logTodoData}
-          />
-        )
-      })}
+    <CounterBy incrementBy={5} />
     </div>
   )
 }
