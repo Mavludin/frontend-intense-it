@@ -9,6 +9,7 @@ export const CounterBy = ({ incrementBy = 1 }) => {
   // Вызывать хук только так, свободно, и внутри компонента
   const [count, setCount] = useState(0);
 
+  console.log('upadtes')
   // Ошибка
 
   //   if (condition) {
@@ -16,6 +17,7 @@ export const CounterBy = ({ incrementBy = 1 }) => {
   //   }
 
   const handleIncrement = () => {
+    // setCount(count + incrementBy);
     setCount(count + incrementBy);
 
     // Ошибка
