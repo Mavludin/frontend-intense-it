@@ -1,127 +1,204 @@
+// import { useState } from 'react';
 import { useState } from 'react';
 import './App.css';
-import { CustomComponent } from './components/CustomComponent';
+import { users } from './data';
 
-const users = [
-  {
-    id: 1,
-    name: 'James',
-    age: 30,
-  },
-  {
-    id: 2,
-    name: 'John',
-    age: 50,
-  },
-  {
-    id: 3,
-    name: 'Alex',
-    age: 30,
-  },
-  {
-    id: 4,
-    name: 'Gabriel',
-    age: 50,
-  }
-]
+import deleteIcon from './assets/delete.png'
+import editIcon from './assets/edit.png'
+
+// Мутация (Mutation) - Изменение
+
+// const usersHash = {
+//   1: {
+//     name: "James",
+//     age: 30,
+//   },
+//   2: {
+//     name: "John",
+//     age: 50,
+//   },
+//   3: {
+//     name: "Alex",
+//     age: 30,
+//   },
+//   4: {
+//     name: "Gabriel",
+//     age: 50,
+//   },
+// }
+
+// console.log(Object.keys(usersHash))
+// console.log(Object.values(usersHash))
+// console.log(Object.entries(usersHash))
+
+// const keys = Object.keys(usersHash)
+
+// keys.forEach((key) => {
+//   console.log(usersHash[key])
+// })
+
+const newUser = {
+  name: "New user name",
+  age: 60,
+}
+
+const editedUser = {
+  name: "edited User Name",
+  age: 10,
+}
 
 function App() {
-  // const [count, setCount] = useState(0)
 
-  // const [state, setState] = useState('')
+  // const [user, setUser] = useState({
+  //   name: 'James',
+  //   job: 'Teacher',
+  //   address: {
+  //     city: 'New York',
+  //     street: 'Wall ST.',
+  //   }
+  // })
 
-  // const handleClick = () => {
-  //   console.log(count);
+  // const changeJob = () => {
+  //   const copyUser = {...user};
 
-  //   setCounter(count + 1); // 0 + 1
-  //   setCounter(count + 1); // 0 + 1
-  //   setCounter(count + 1); // 0 + 1
-  //   setCounter(count + 1); // 0 + 1
+  //   copyUser.job = 'Programmer'
 
-  //   console.log(count);
-    
-  //   setTimeout(() => {
-  //     console.log('timeout', count);
-  //   }, 2000);
-
-  //   setState('Random string');
-  //   // batching
+  //   setUser(copyUser)
   // }
 
-  // const handleClick = () => {
-  //   setCount((c) => c + 1); // 0 + 1 === 1
-  //   setCount((c) => c + 1); // 1 + 1 === 2
-  //   setCount((c) => c + 1); // 2 + 1 === 3
-
-  //   setCount(function(c) {
-  //     return c + 1
+  // const changeCity = () => {
+  //   setUser({
+  //     ...user,
+  //     address: {
+  //       ...user.address,
+  //       city: 'London'
+  //     }
   //   })
   // }
 
-  // const [user, setUser] = useState({
-  //   age: 20,
-  //   name: 'James'
-  // })
-  
-  const handleClick = () => {
-    // Данные теряются
-    // setUser({
-    //   age: 30
-    // })
+  // CRUD (Create, Read, Update, Delete)
 
-    // setUser({
-    //   ...user,
-    //   age: 30
-    // })
+  const [usersList, setUsersList] = useState(users)
 
-    // setUser({
-    //   age: 30,
-    //   name: user.name
-    // })
+  const addNewUser = () => {
+    // usersList.push(newUser);
+
+    // console.log(usersList);
+
+    const copyUsers = [...usersList];
+    copyUsers.push({...newUser, id: usersList.length + 1});
+
+    setUsersList(copyUsers);
   }
 
-  const [userList, setUserList] = useState(users)
-  
-  const deletUser = (index) => {
-    const userListCopy = [...userList];
+  // const deleteUserById = (id) => {
+  //   setUsersList(usersList.filter((user) => {
+  //     return user.id !== id
+  //   }))
+  // }
 
-    userListCopy.splice(index, 1);
+  const deleteUserByIndex = (index) => {
+    const copyUsers = [...usersList];
 
-    setUserList(userListCopy);
+    copyUsers.splice(index, 1)
 
-    // const filtered = users.filter((user) => user.id !== 3);
+    setUsersList(copyUsers)
+  }
 
-    // console.log(users);
-    // console.log(filtered);
+  // const editUserByIndex = (index) => {
+  //   const copyUsers = [...usersList];
+
+  //   copyUsers[index] = {...copyUsers[index], ...editedUser}
+
+  //   setUsersList(copyUsers)
+  // }
+
+  console.log(usersList)
+
+  const editUserById = (id) => {
+    // editedUser
+    setUsersList(usersList.map((user) => {
+      if (id === user.id) {
+        return {
+          ...user,
+          ...editedUser
+        }
+      }
+
+      return user
+    }))
   }
 
   return (
     <div className='app'>
-      {/* <div>{state}</div>
-      <div>{count}</div>
-      <button onClick={handleClick}>Click</button>
-
-      <CustomComponent setCount={setCount} /> */}
-
       {/* <div>
-        <h2>User Data</h2>
-        <div>Age: {user.age}</div>
         <div>Name: {user.name}</div>
-      </div> */}
+        <div>Job: {user.job}</div>
+        <div>
+          City: {user.address.city}
+        </div>
+        <div>
+          Street: {user.address.street}
+        </div>
+      </div>
 
-      {/* <button onClick={handleClick}>Change user</button> */}
+     <button onClick={changeJob}>
+      Change user job
+     </button>
 
-      {userList.length === 0 && <h2>Нет данных</h2>}
+     <button onClick={changeCity}>
+      Change user city
+     </button> */}
+     {/* {Object.entries(usersHash).map(([id, user]) => {
+      return (
+        <div key={id}>
+          <div>Name: {user.name}</div>
+          <div>Age: {user.age}</div>
+        </div>
+      )
+     })} */}
+     <section className='addSection'>
+      <button onClick={addNewUser}>
+        Add New user
+      </button>
+     </section>
 
-      {userList.map((user, index) => {
+      <div
+        style={{ 
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 10
+        }}
+      >
+     {usersList.map((user, index) => {
         return (
           <div key={user.id}>
-            <h2>Name: {user.name}</h2>
-            <div>Age: {user.age}</div>
-            <button onClick={() => deletUser(index)}>Delete</button>
+            <div>
+              <strong>Name:</strong> {user.name}
+            </div>
+            <div>
+              <strong>Age:</strong> {user.age}
+            </div>
+            <div>
+              <button onClick={() => deleteUserByIndex(index)}>
+                <img
+                  style={{ width: '12px' }}
+                  src={deleteIcon} alt="Trash can"
+                />
+              </button>
+              <button onClick={() => editUserById(user.id)}>
+                <img
+                  style={{ width: '12px' }}
+                  src={editIcon} alt="Trash can"
+                />
+              </button>
+            </div>
+
+            {index !== usersList.length - 1 && <hr />}
           </div>
-        )
-      })}
+      )})}
+     </div>
+
     </div>
   )
 }
