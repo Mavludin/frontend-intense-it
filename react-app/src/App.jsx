@@ -5,6 +5,8 @@ import { users } from './data';
 
 import deleteIcon from './assets/delete.png'
 import editIcon from './assets/edit.png'
+import { AddForm } from './components/AddForm';
+import { EditForm } from './components/EditForm';
 
 // Мутация (Mutation) - Изменение
 
@@ -47,6 +49,10 @@ const editedUser = {
   age: 10,
 }
 
+const storedUsers = JSON.parse(localStorage.getItem('users'))
+
+console.log(storedUsers)
+
 function App() {
 
   // const [user, setUser] = useState({
@@ -78,17 +84,22 @@ function App() {
 
   // CRUD (Create, Read, Update, Delete)
 
-  const [usersList, setUsersList] = useState(users)
+  const [showAddForm, setShowAddForm] = useState(false);
+  const [showEditForm, setShowEditForm] = useState(false);
 
-  const addNewUser = () => {
-    // usersList.push(newUser);
+  const [usersList, setUsersList] = useState(storedUsers ?? users);
 
-    // console.log(usersList);
+  const [selectedUser, setSelectedUser] = useState(null);
 
+  const addNewUser = (newUser) => {
     const copyUsers = [...usersList];
     copyUsers.push({...newUser, id: usersList.length + 1});
 
     setUsersList(copyUsers);
+
+    setShowAddForm(false);
+
+    localStorage.setItem('users', JSON.stringify(copyUsers));
   }
 
   // const deleteUserById = (id) => {
@@ -103,6 +114,8 @@ function App() {
     copyUsers.splice(index, 1)
 
     setUsersList(copyUsers)
+
+    localStorage.setItem('users', JSON.stringify(copyUsers));
   }
 
   // const editUserByIndex = (index) => {
@@ -113,20 +126,24 @@ function App() {
   //   setUsersList(copyUsers)
   // }
 
-  console.log(usersList)
+  const handleShowEditForm = (userItem) => {
+    setShowEditForm(true);
 
-  const editUserById = (id) => {
+    setSelectedUser(userItem)
+  }
+
+  const editUser = (editedUser) => {
+    console.log({ editedUser })
     // editedUser
     setUsersList(usersList.map((user) => {
-      if (id === user.id) {
-        return {
-          ...user,
-          ...editedUser
-        }
+      if (editedUser.id === user.id) {
+        return editedUser
       }
 
       return user
     }))
+
+    setShowEditForm(false)
   }
 
   return (
@@ -157,8 +174,17 @@ function App() {
         </div>
       )
      })} */}
+
+    {showAddForm && (
+      <AddForm addNewUser={addNewUser} />
+    )}
+
+    {showEditForm && (
+      <EditForm selectedUser={selectedUser} editUser={editUser} />
+    )}
+
      <section className='addSection'>
-      <button onClick={addNewUser}>
+      <button onClick={() => setShowAddForm(true)}>
         Add New user
       </button>
      </section>
@@ -186,7 +212,7 @@ function App() {
                   src={deleteIcon} alt="Trash can"
                 />
               </button>
-              <button onClick={() => editUserById(user.id)}>
+              <button onClick={() => handleShowEditForm(user)}>
                 <img
                   style={{ width: '12px' }}
                   src={editIcon} alt="Trash can"
