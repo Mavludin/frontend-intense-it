@@ -1,3 +1,17 @@
+.header {
+    text-align: center;
+
+    display: flex;
+    justify-content: center;
+}
+
+.header button {
+    display: flex;
+    align-items: center;
+
+    gap: 5px;
+}
+
 .header img {
-    width: 200px;
+    width: 24px;
 }

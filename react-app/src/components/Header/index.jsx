@@ -1,21 +1,29 @@
-import reactIcon from '../../assets/react.svg';
-import './style.css';
+import "./style.css";
+import nightIcon from "../../assets/night.png";
+import sunIcon from "../../assets/sun.png";
+import { useContext } from "react";
+import { ThemeContext } from "../../context/ThemeProvider";
 
-export const Header = ({ companyName, sum, user }) => {
-    // console.log(props);
+export const Header = () => {
+  const { mode, toggleMode } = useContext(ThemeContext);
 
-    // companyName = 'new value' Нельзя менять пропсы изнутри
-
-    return (
-        <header className='header'>
-            {/* <div>{props.companyName}</div> */}
-            <div>{companyName}</div>
-            <div>Sum: {sum}</div>
-            <div>
-                <div>Name: {user.name}</div>
-                <div>Age: {user.age}</div>
-            </div>
-            <img src={reactIcon} alt="" />
-        </header>
-    )
-}
+  return (
+    <header className="header">
+      <button
+        onClick={toggleMode}
+        style={{
+          color: mode === 'dark' && 'white',
+          backgroundColor: mode === 'dark' && 'black',
+        }}
+      >
+        <span>Mode</span>
+        <img
+          src={
+            mode === 'light' ? sunIcon : nightIcon
+          }
+          alt=""
+        />
+      </button>
+    </header>
+  );
+};
