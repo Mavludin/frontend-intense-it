@@ -1,76 +1,72 @@
-import { useRef } from 'react';
+import { useEffect } from 'react'
 import './App.css'
-import { Footer } from './components/Footer/Footer';
-/*
-Когда используются рефы
-- Для хранения таймеров (setInterval, setTimeout);
-- Для получения доступа к DOM узлам (input, div, form): focus, blur, scroll
-*/
+import { useState } from 'react'
+import { VideoPlayer } from './components/VideoPlayer'
 
-function App() {
-  const loginRef = useRef(null)
-  const passwordRef = useRef(null)
+const foo = () => {
+  console.log('Код при прогрузке страницы')
+}
 
-  const footerRef = useRef(null)
+const STATIC_STRING = 'Static string'
 
-  const onSubmit = (e) => {
-    e.preventDefault()
+function App({ rate }) {
+  // состояние
+
+  const [count, setCount] = useState(0)
+  const [count1, setCount1] = useState(0)
+
+  const [showPlayer, setShowPlayer] = useState(false)
+
+  // console.log(1)
+
+  // useEffect(() => {
+  //   console.log('Код выполняется всегда')
+  // })
+
+  // useEffect(() => {
+  //   console.log('Код при прогрузке страницы')
+  // }, [])
+
+  // useEffect(() => {
+  //   console.log('второй эффект!')
+
+  //   if (count * rate >= 5) {
+  //     console.log('ГОТОВО!!!')
+  //   }
+  // }, [count, rate, count1]) // count1 не должен быть в этом массиве
   
-    // const target = e.target;
+  // useEffect(() => {
+  //   console.log(STATIC_STRING)
+  // }, []) // статические данные не меняются
+
+  const onShowPlayer = () => {
+    setShowPlayer(true)
+  }
+
+  const onHidePlayer = () => {
+    setShowPlayer(false)
+  }
   
-    // console.log({
-    //   login: target.login.value,
-    //   password: target.password.value
-    // })
+  // console.log(2)
 
-    console.log({
-      login: loginRef.current.value,
-      password: passwordRef.current.value
-    })
-  }
-
-  const onLoginFocus = () => {
-    loginRef.current.focus()
-  }
-
-  const onPasswordFocus = () => {
-    passwordRef.current.focus()
-  }
-
-  const scrollToFooter = () => {
-    footerRef.current.scrollIntoView({ behavior: "smooth"})
-  }
-
-  console.log(footerRef)
-  
   return (
     <div className='app'>
+    <h1>Разметка</h1>
 
-      <header>
-        <button onClick={scrollToFooter}>Scroll to Footer</button>
-      </header>
+    <div>{count}</div>
+    <div>
+      <button onClick={() => setCount(count + 1)}>Click</button>
+    </div>
+    
+    <div>
+      <button onClick={onShowPlayer}>Show</button>
+      <button onClick={onHidePlayer}>Hide</button>
+    </div>
 
-      <form onSubmit={onSubmit} style={{ height: 1500 }}>
-        <div>
-          <input ref={loginRef} type="text" placeholder='Login' name="login" />
-          <button onClick={onLoginFocus}>Focus</button>
-        </div>
-        <div>
-          <input ref={passwordRef} type="password" placeholder='Password' name="password" />
-          <button onClick={onPasswordFocus}>Focus</button>
-        </div>
-        <div>
-          <button>Submit</button>
-        </div>
-      </form>
+    {showPlayer && (
+      <VideoPlayer />
+    )}
 
-      {/* <footer ref={footerRef}>
-        Footer
-      </footer> */}
-
-      {/* <Footer footerRef={footerRef} /> */}
-
-      <Footer ref={footerRef} someProp='Footer' />
     </div>
   )
 }

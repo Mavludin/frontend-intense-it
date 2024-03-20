@@ -8,5 +8,3 @@ export const Footer = forwardRef(({ title }, ref) => {
         </footer>
     )
 })
-
-forwardRef('функция - комопнент')
