@@ -1,74 +1,46 @@
-import { useEffect } from 'react'
-import './App.css'
-import { useState } from 'react'
-import { VideoPlayer } from './components/VideoPlayer'
+import { useEffect, useState } from "react";
+import "./App.css";
+import { BirthYear } from "./components/BirthYear";
 
-const foo = () => {
-  console.log('Код при прогрузке страницы')
-}
+const years = [1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005];
 
-const STATIC_STRING = 'Static string'
+function App() {
+  // const [year, setYear] = useState();
 
-function App({ rate }) {
-  // состояние
+  // const getYear = (year) => {
+  //   console.log(year);
 
-  const [count, setCount] = useState(0)
-  const [count1, setCount1] = useState(0)
+  //   setYear(year);
+  // };
 
-  const [showPlayer, setShowPlayer] = useState(false)
+  const [width, setWidth] = useState(0);
 
-  // console.log(1)
+  useEffect(() => {
+    const handleResize = () => {
+      setWidth(window.innerWidth)
+    }
 
-  // useEffect(() => {
-  //   console.log('Код выполняется всегда')
-  // })
+    window.addEventListener("resize", handleResize);
 
-  // useEffect(() => {
-  //   console.log('Код при прогрузке страницы')
-  // }, [])
-
-  // useEffect(() => {
-  //   console.log('второй эффект!')
-
-  //   if (count * rate >= 5) {
-  //     console.log('ГОТОВО!!!')
-  //   }
-  // }, [count, rate, count1]) // count1 не должен быть в этом массиве
-  
-  // useEffect(() => {
-  //   console.log(STATIC_STRING)
-  // }, []) // статические данные не меняются
-
-  const onShowPlayer = () => {
-    setShowPlayer(true)
-  }
-
-  const onHidePlayer = () => {
-    setShowPlayer(false)
-  }
-  
-  // console.log(2)
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, []);
 
   return (
-    <div className='app'>
-    <h1>Разметка</h1>
+    <div className="app">
+      {/* <BirthYear
+        // setYear={setYear}
+        getYear={getYear}
+        years={years}
+      /> */}
+      <div style={{ color: width > 400 ? "crimson" : "black" }}>
+        Some text
+      </div>
 
-    <div>{count}</div>
-    <div>
-      <button onClick={() => setCount(count + 1)}>Click</button>
+      {/* <div>{year}</div> */}
     </div>
-    
-    <div>
-      <button onClick={onShowPlayer}>Show</button>
-      <button onClick={onHidePlayer}>Hide</button>
-    </div>
-
-    {showPlayer && (
-      <VideoPlayer />
-    )}
-
-    </div>
-  )
+  );
 }
 
-export default App
+export default App;

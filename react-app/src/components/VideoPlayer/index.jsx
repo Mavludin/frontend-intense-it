@@ -4,15 +4,15 @@ export const VideoPlayer = () => {
   const videoRef = useRef(null);
   const timerRef = useRef(0);
 
-  const [played, setPlayed] = useState(false)
+  const [played, setPlayed] = useState(false);
 
   const onPlay = () => {
-    setPlayed(true)
-  }
+    setPlayed(true);
+  };
 
   const onStop = () => {
-    setPlayed(false)
-  }
+    setPlayed(false);
+  };
 
   useEffect(() => {
     // videoRef.current.play();
@@ -20,33 +20,29 @@ export const VideoPlayer = () => {
     console.log("Монтирование");
 
     if (played) {
-        videoRef.current.play();
+      videoRef.current.play();
     } else {
-        videoRef.current.pause();
+      videoRef.current.pause();
     }
 
     timerRef.current = setTimeout(() => {
-        console.log('Сработало!!!')
-    }, 3000)
+      console.log("Сработало!!!");
+    }, 3000);
 
     return () => {
       console.log("Размонтирование VideoPlayer");
-        
-      clearTimeout(timerRef.current)
+
+      clearTimeout(timerRef.current);
     };
   }, [played]);
 
   return (
     <div>
-        <h2>Video Player</h2>
-        <div>
-            <button onClick={onPlay}>
-                Play
-            </button>
-            <button onClick={onStop}>
-                Stop
-            </button>
-        </div>
+      <h2>Video Player</h2>
+      <div>
+        <button onClick={onPlay}>Play</button>
+        <button onClick={onStop}>Stop</button>
+      </div>
       <video
         ref={videoRef}
         style={{ width: 200 }}
