@@ -1,3 +1,34 @@
+.app {
+    padding: 10px
+}
+
+.forms {
+    display: flex;
+    gap: 25px;
+}
+
 .posts {
     padding: 0 10px;
+
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+}
+
+.posts img {
+    width: 300px;
+}
+
+.posts .actions {
+    display: flex;
+    gap: 3px;
+}
+
+.posts button {
+    padding: 0;
+    background: none
+}
+
+.posts .actions img {
+    width: 24px;
 }
