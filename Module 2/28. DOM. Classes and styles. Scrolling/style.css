@@ -1,0 +1,19 @@
+.box {
+    width: 300px;
+    height: 200px;
+    border: 25px solid #E8C48F;
+    overflow: auto;
+  }
+  
+  /* .box {
+    height: 100px;
+    width: 100px;
+    background-color: #E21A1A;
+  }
+  
+  .newName {
+    height: 100px;
+    width: 100px;
+    background-color: blue;
+    -moz-animation: alternate;
+  } */
