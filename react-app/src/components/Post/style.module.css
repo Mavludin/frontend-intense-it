@@ -1,0 +1,15 @@
+.posts {
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+}
+
+.posts button {
+    padding: 0;
+    background: none
+}
+
+.button {
+    padding: 0;
+    background: none
+}

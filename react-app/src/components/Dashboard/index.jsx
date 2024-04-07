@@ -1,5 +1,7 @@
 import { useGetPosts } from "../../hooks/useGetPosts";
 
+import './style.css'
+
 export const Dashboard = () => {
   const { posts } = useGetPosts();
 

@@ -5,13 +5,26 @@ import heartIconBlack from "../../assets/heart-black.svg";
 import deleteIcon from "../../assets/delete.svg";
 import editIcon from "../../assets/edit.svg";
 
+import s from './style.module.css'
+
+console.log({ s })
+
+const postsStyles = {
+  color: 'navy',
+  backgroundColor: 'red'
+}
+
 export const Post = ({ id }) => {
   const post = useGetPostById(id);
 
   if (post === null) return null;
 
   return (
-    <div className="posts">
+    <div
+      // style={{ color: 'navy', backgroundColor: 'red' }}
+      // style={postsStyles}
+      className={`${s.posts} posts`}
+    >
       <div className="thumbnail">
         <img src={post.thumbnail} alt={post.title} />
       </div>

@@ -9,10 +9,6 @@
 
 .posts {
     padding: 0 10px;
-
-    display: flex;
-    flex-direction: column;
-    row-gap: 15px;
 }
 
 .posts img {
@@ -32,3 +28,4 @@
 .posts .actions img {
     width: 24px;
 }
+

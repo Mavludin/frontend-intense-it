@@ -1,0 +1,17 @@
+.button {
+    padding: 5px 15px;
+
+    background-color: crimson;
+    font-weight: 600;
+    font-size: 18px;
+
+    color: white;
+}
+
+.disabled {
+    background-color: gray;
+}
+
+.active {
+    background-color: brown;
+}
