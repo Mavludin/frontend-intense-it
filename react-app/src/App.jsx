@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo, useCallback } from "react";
 import "./App.css";
 import { Blog } from "./components/Blog";
 import { useIsOnline } from "./hooks/useIsOnline";
@@ -10,6 +10,7 @@ import { StyledButton } from "./components/StyledButton";
 import { Switch } from 'antd';
 
 import { Button } from 'antd'
+import { DummyComponent } from "./components/DummyComponent";
 
 const buttons = [
   'Button 1',
@@ -18,82 +19,80 @@ const buttons = [
   'Button 4',
 ]
 
+const numbers = [1, 2, 3, 4];
+
 function App() {
-  // const isOnline = useIsOnline()
+  const [count, setCount] = useState(0)
+  const [flag, setFlag] = useState(false)
+  const [posts, setPosts] = useState(0)
 
-  const [activeButtonIndex, setActiveButtonIndex] = useState(0)
-  const [buttonsDisabled, setButtonsDisabled] = useState(false)
+  const increment = () => {
+    // setCount(1)
 
-  // console.log(isOnline)
-
-  const handleSwitchChange = (checked) => {
-    setButtonsDisabled(checked)
+    setCount(count + 1)
   }
+
+  const getPosts = useCallback(async () => {
+    try {
+      const res = await fetch('https://posts.com');
+
+      if (res.ok) {
+        setPosts(await res.json())
+
+        return
+      }
+
+      throw new Error('Что-то пошло не так')
+    } catch (err) {
+      console.error(err)
+    }
+  }, [])
+
+  const num = count * 2 // Примитив. Нет смысла мемоизировать
+
+  // const filteredNumbers = numbers.filter((num) => {
+  //   return num !== count
+  // })
+
+  const filteredNumbers = useMemo(() => {
+    return numbers.filter((num) => {
+      return num !== count
+    })
+  }, [count])
+
+  // const numbers = [1, 2, 3, 4]
+
+  useEffect(() => {
+    // const numbers = [1, 2, 3, 4]
+
+    console.log(count)
+
+    // console.log(filteredNumbers)
+
+    // console.log(numbers)
+  }, [count])
+
+  useEffect(() => {
+    console.log(filteredNumbers)
+  }, [filteredNumbers])
+
+  // 1 отрисовка count = 0 (log: 0)
+  // 2 отрисовка count = 1 (log: 1)
+  // 3 отрисовка count = 1 
 
   return (
     <div className="app">
-      {/* <Blog /> */}
+      <h1>React App</h1>
 
-      {/* <Dashboard /> */}
+      <button onClick={increment}>Click</button>
 
-      {/* <Post id="1" /> */}
+      <ul>
+        {filteredNumbers.map((num) => {
+          return <li key={num}>{num}</li>;
+        })}
+      </ul>
 
-      {/* <TestPost /> */}
-
-      {/* <CustomButton text="Click" />
-      <CustomButton text="Click" disabled />
-      <CustomButton text="User 5" active /> */}
-
-      {/* {buttons.map((button, index) => {
-        return (
-          <CustomButton
-            key={button}
-            text={button}
-            active={index === activeButtonIndex}
-            onClick={() => setActiveButtonIndex(index)}
-            disabled
-          />
-        )
-      })} */}
-
-      {/* {buttons.map((button, index) => {
-        return (
-          <StyledButton
-            key={button}
-            text={button}
-            active={index === activeButtonIndex}
-            onClick={() => setActiveButtonIndex(index)}
-            // style={{
-            //   backgroundColor: 'red'
-            // }}
-            // disabled={index === 2}
-          />
-        )
-      })} */}
-
-      {buttons.map((button, index) => {
-        return (
-          <Button
-            key={button}
-            type={activeButtonIndex === index ? 'primary' : 'default'}
-            // disabled={index === 3}
-            onClick={() => setActiveButtonIndex(index)}
-            disabled={buttonsDisabled}
-          >
-            {button}
-          </Button>
-        )
-      })}
-
-      <div>
-        <Switch onChange={handleSwitchChange} />
-      </div>
-
-      {/* <Button>Click</Button>
-      <Button type="primary">Click</Button>
-      <Button type="dashed">Click</Button>
-      <Button type="link">Click</Button>
-      <Button type="text">Click</Button> */}
+      <DummyComponent num={10} getPosts={getPosts} />
     </div>
   );
 }
