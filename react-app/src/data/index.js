@@ -20,3 +20,11 @@ export const users = [
     age: 50,
   },
 ];
+
+export const ROUTES = Object.freeze({
+  home: '/',
+  about: '/about',
+  contact: '/contact',
+  posts: '/posts',
+  post: '/posts/:id',
+})
