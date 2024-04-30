@@ -18,11 +18,17 @@ export const Post = () => {
       .then((data) => setPost(data));
   }, [id]);
 
-  useEffect(() => {
-    setTimeout(() => {
-      navigate('/contact')
-    }, 5000)
-  }, [])
+  // dispatchEvent(increment())
+  // dispatchEvent(incrementByAmount(5))
+  // dispatchEvent(incrementByAmount(10))
+  // dispatchEvent(incrementByAmount(100))
+  // dispatchEvent(incrementByAmount(-1000))
+
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     navigate('/contact')
+  //   }, 5000)
+  // }, [])
 
   if (post === null) return (
     <p>Loading data...</p>
