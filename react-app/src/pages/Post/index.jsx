@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
+import { API_URL, deletePost } from '../../store/posts';
+import { useDispatch } from 'react-redux';
 
 export const Post = () => {
   const { id } = useParams()
@@ -8,15 +10,26 @@ export const Post = () => {
 
   const location = useLocation();
 
+  const dispatch = useDispatch();
+
   const navigate = useNavigate();
 
   console.log({ location })
 
   useEffect(() => {
-    fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
+    fetch(`${API_URL}/posts/${id}`)
       .then((res) => res.json())
       .then((data) => setPost(data));
   }, [id]);
+
+  const onDelete = () => {
+    fetch(`${API_URL}/posts/${id}`, {
+      method: "DELETE",
+    })
+      .then(() => {
+        navigate(-1)
+      })
+  }
 
   // dispatchEvent(increment())
   // dispatchEvent(incrementByAmount(5))
@@ -39,7 +52,8 @@ export const Post = () => {
       <h1>
         {post.title}
       </h1>
-      <p>{post.body}</p>
+      <p>{post.description}</p>
+      <button onClick={onDelete}>Delete</button>
     </div>
   )
 }
